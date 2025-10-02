@@ -275,7 +275,7 @@ function Header() {
                     <label className="header-nav-profile-li-label">
                       <div className="header-nav-profile-li-label-div">
                         <span className="header-nav-profile-li-label-div-span-1">
-                          Nikhil
+                          Anurag
                         </span>
                         <span className="header-nav-profile-li-label-div-span-2"></span>
                       </div>
@@ -342,3 +342,4 @@ function Header() {
 }
 
 export default Header;
+
