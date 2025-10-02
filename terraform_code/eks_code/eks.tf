@@ -1,39 +1,32 @@
+####################################################################################
+###  EKS Cluster Module Configuration
+####################################################################################
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.15.1"
+  version = "~> 20.0"
 
-  cluster_name                   = local.name
+  cluster_name    = var.eks_cluster_name
+  cluster_version = "1.32"
+
   cluster_endpoint_public_access = true
-
-  cluster_addons = {
-    coredns = {
-      most_recent = true
-    }
-    kube-proxy = {
-      most_recent = true
-    }
-    vpc-cni = {
-      most_recent = true
-    }
-  }
-
-  vpc_id                   = module.vpc.vpc_id
-  subnet_ids               = module.vpc.private_subnets
+  enable_cluster_creator_admin_permissions = true
 
   eks_managed_node_groups = {
-    panda-node = {
-      min_size     = 2
-      max_size     = 4
-      desired_size = 2
-
-      instance_types = ["t2.medium"]
-      capacity_type  = "SPOT"
-
-      tags = {
-        ExtraTag = "Panda_Node"
-      }
+    example = {
+      instance_types = ["t3.medium"]
+      min_size       = 1
+      max_size       = 5
+      desired_size   = 2
     }
   }
 
-  tags = local.tags
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnets
+
+  tags = {
+    Name        = var.eks_cluster_name
+    Environment = var.environment
+    Terraform   = "true"
+  }
+
 }
