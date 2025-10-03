@@ -28,6 +28,7 @@ This stack is designed for **cloud-native, production-ready workloads**, combini
   - Auto-scaling EKS nodes based on load.
 
 ## Snapshots
+![Architecture Diagram](src/images/ArgoCD.png)
 ![Architecture Diagram](src/images/Grafana.png)
 
 
