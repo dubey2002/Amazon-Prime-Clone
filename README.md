@@ -28,7 +28,7 @@ This stack is designed for **cloud-native, production-ready workloads**, combini
   - Auto-scaling EKS nodes based on load.
 
 ## Snapshots
-
+src/images/Grafana.png
 
 
 ---
